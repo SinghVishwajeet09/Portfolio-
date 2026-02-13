@@ -38,3 +38,12 @@ Smooth scrolling & animations
 Projects showcase
 Skills section
 Contact section
+
+📬 Contact
+Email: singhvishwajeet958@gmail.com
+LinkedIn: https://linkedin.com/in/vishwajeet-raj-singh-66956126a
+GitHub: https://github.com/singhvishwajeet09
+
+⭐ Show Your Support
+
+If you found this project useful, please consider giving it a star ⭐
