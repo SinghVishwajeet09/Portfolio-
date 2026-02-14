@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmailJS Setup - Quick Reference</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .step-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .step-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .step-card h2 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .step-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .step-card a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .step-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .code-section {
+            background: #f5f5f5;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+        }
+        
+        .keys-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        
+        .keys-table th,
+        .keys-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .keys-table th {
+            background: #667eea;
+            color: white;
+        }
+        
+        .keys-table tr:hover {
+            background: #f9f9f9;
+        }
+        
+        .key-name {
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .location-badge {
+            display: inline-block;
+            background: #e0e7ff;
+            color: #667eea;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+        
+        .final-step {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        
+        .final-step h2 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+        
+        .final-step code {
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            display: block;
+            margin: 10px 0;
+            border-left: 3px solid #4caf50;
+        }
+        
+        .timer {
+            text-align: center;
+            margin-top: 20px;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            animation: progress 0.5s ease-out;
+        }
+        
+        @keyframes progress {
+            from { width: 0%; }
+            to { width: 80%; }
+        }
+        
+        .checklist {
+            list-style: none;
+        }
+        
+        .checklist li {
+            padding: 8px 0;
+            color: #666;
+        }
+        
+        .checklist li:before {
+            content: "✓ ";
+            color: #4caf50;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 EmailJS Portfolio Setup</h1>
+        <p class="subtitle">Har ek step sirf 2-3 minutes mein! (Total: ~10 minutes)</p>
+        
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+        
+        <div class="steps">
+            <!-- Step 1 -->
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h2>Account Banao</h2>
+                <p>EmailJS website pe ja kar free account create karo</p>
+                <a href="https://www.emailjs.com/" target="_blank">👉 emailjs.com</a>
+                <div class="code-section">
+                    Sign Up → Email Verify → Done!
+                </div>
+                <div class="timer">⏱️ ~2 minutes</div>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h2>Public Key Copy Karo</h2>
+                <p>Dashboard → Account → Public Key</p>
+                <div class="code-section">
+                    Ye key index.html ke line 694 mein paste hoga
+                </div>
+                <div class="location-badge">📍 Account Tab</div>
+                <div class="timer">⏱️ ~1 minute</div>
+            </div>
+            
+            <!-- Step 3 -->
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h2>Gmail Service Connect Karo</h2>
+                <p>Email Services → Add New Service → Gmail</p>
+                <div class="code-section">
+                    Allow popup → Service ID copy karo
+                </div>
+                <div class="location-badge">📍 Email Services</div>
+                <div class="timer">⏱️ ~2 minutes</div>
+            </div>
+            
+            <!-- Step 4 -->
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h2>Email Template Banao</h2>
+                <p>Email Templates → Create New</p>
+                <div class="code-section">
+                    Template Name: Contact Form<br>
+                    Service: Gmail<br>
+                    Copy: Template ID
+                </div>
+                <div class="location-badge">📍 Email Templates</div>
+                <div class="timer">⏱️ ~3 minutes</div>
+            </div>
+            
+            <!-- Step 5 -->
+            <div class="step-card">
+                <div class="step-number">5</div>
+                <h2>Template Content</h2>
+                <p>Template body mein ye variables use karo:</p>
+                <div class="code-section">
+                    {{user_name}}<br>
+                    {{user_email}}<br>
+                    {{message}}
+                </div>
+                <div class="timer">⏱️ ~2 minutes</div>
+            </div>
+            
+            <!-- Step 6 -->
+            <div class="step-card">
+                <div class="step-number">6</div>
+                <h2>Update index.html</h2>
+                <p>3 keys ko index.html lines 694, 699, 700 mein paste karo</p>
+                <div class="code-section">
+                    Line 694: Public Key<br>
+                    Line 699: Service ID<br>
+                    Line 700: Template ID
+                </div>
+                <div class="timer">⏱️ ~2 minutes</div>
+            </div>
+        </div>
+        
+        <!-- Keys Reference -->
+        <h2 style="margin-bottom: 15px; color: #333;">📋 Keys Reference Table</h2>
+        <table class="keys-table">
+            <thead>
+                <tr>
+                    <th>Key Name</th>
+                    <th>Kahan Milti Hai</th>
+                    <th>Index.html Line</th>
+                    <th>Example Format</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="key-name">Public Key</span></td>
+                    <td>Dashboard → Account</td>
+                    <td>694</td>
+                    <td>abcd1234efgh...</td>
+                </tr>
+                <tr>
+                    <td><span class="key-name">Service ID</span></td>
+                    <td>Email Services</td>
+                    <td>699</td>
+                    <td>gmail_xxxxx</td>
+                </tr>
+                <tr>
+                    <td><span class="key-name">Template ID</span></td>
+                    <td>Email Templates</td>
+                    <td>700</td>
+                    <td>template_xxxxx</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- Final Step -->
+        <div class="final-step">
+            <h2>✅ Final Step: Code Update</h2>
+            <p>अपने index.html file को खोलो और ये 3 lines को update करो:</p>
+            <code>// Line 694
+emailjs.init('<strong>YOUR_PUBLIC_KEY_HERE</strong>');</code>
+            
+            <code>// Line 699
+'<strong>YOUR_SERVICE_ID_HERE</strong>',</code>
+            
+            <code>// Line 700
+'<strong>YOUR_TEMPLATE_ID_HERE</strong>',</code>
+            
+            <p style="margin-top: 15px;">फिर form को test करो और अपने email पर message check करो! 🎉</p>
+        </div>
+        
+        <!-- Troubleshooting -->
+        <h2 style="margin-top: 30px; margin-bottom: 15px; color: #333;">🔧 Troubleshooting</h2>
+        <ul class="checklist">
+            <li>Error आ रहा है? → Public Key, Service ID, Template ID दोबारा copy करो</li>
+            <li>Email नहीं आ रहा? → Spam folder check करो</li>
+            <li>Variables नहीं दिख रहे? → Template में {{user_name}}, {{user_email}}, {{message}} सही से हैं?</li>
+            <li>Form submit नहीं हो रहा? → Browser console देखो (F12 → Console)</li>
+        </ul>
+    </div>
+</body>
+</html>
