@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishwajeet Raj Singh | Portfolio</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- EmailJS Library -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        slate: {
+                            850: '#151e2e',
+                            950: '#020617',
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'grow-width': 'growWidth 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        growWidth: {
+                            '0%': { width: '0%' },
+                            '100%': { width: '100%' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+              
+    <style>
+        /* Custom Styles for Scrollbar & Utilities */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+        
+        .glass-nav {
+            background: rgba(2, 6, 23, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* Animation Classes controlled by JS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .skill-progress {
+            width: 0;
+            transition: width 1.5s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200 font-sans selection:bg-cyan-500/30">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+                    VISHWAJEET RAJ SINGH
+                    </span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" class="nav-link text-slate-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                        <a href="#about" class="nav-link text-slate-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+                        <a href="#skills" class="nav-link text-slate-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Skills</a>
+                        <a href="#projects" class="nav-link text-slate-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
+                        <a href="#resume" class="nav-link text-slate-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Resume</a>
+                        <a href="#certifications" class="nav-link text-slate-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Certifications</a>
+                        <a href="#contact" class="bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500/20 border border-cyan-500/50 px-4 py-2 rounded-full text-sm font-medium transition-all">Contact Me</a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white p-2">
+                        <i data-lucide="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">Home</a>
+                <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">About</a>
+                <a href="#skills" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">Skills</a>
+                <a href="#projects" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">Projects</a>
+                <a href="#resume" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">Resume</a>
+                <a href="#certifications" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">Certifications</a>
+                <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-cyan-400 font-semibold">Contact Me</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="reveal active">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700 text-cyan-400 text-sm font-medium mb-6">
+                        <i data-lucide="cpu" class="w-4 h-4"></i>
+                        <span>Engineering Student</span>
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                        Hi, I'm <br>
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600">
+                            Vishwajeet Raj Singh
+                        </span>
+                    </h1>
+                    <p class="text-slate-400 text-lg md:text-xl mb-8 max-w-lg leading-relaxed">
+                        Passionate about solving complex engineering problems through code, research, and innovation. Exploring the frontiers of technology.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#projects" class="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-lg font-semibold shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-1 transition-all">
+                            View Work
+                        </a>
+                        <a href="#contact" class="px-8 py-3 bg-slate-800 text-white border border-slate-700 rounded-lg font-semibold hover:bg-slate-700 hover:-translate-y-1 transition-all" >
+                            Contact Me
+                        </a>
+                    </div>
+                    
+ <div class="mt-12 flex items-center gap-6 text-slate-400">
+    <a href="https://github.com/SinghVishwajeet09"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="flex items-center justify-center w-7 h-7 hover:text-cyan-400 transition-colors">
+        <i class="fa-brands fa-github text-[24px] leading-none"></i>
+    </a>
+
+    <a href="https://www.linkedin.com/in/vishwajeet924"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="flex items-center justify-center w-7 h-7 hover:text-cyan-400 transition-colors">
+        <i class="fa-brands fa-linkedin text-[24px] leading-none"></i>
+    </a>
+
+    <a href="mailto:singhvishwajeet958@gmail.com"
+       class="flex items-center justify-center w-7 h-7 hover:text-cyan-400 transition-colors">
+        <i data-lucide="mail" class="w-6 h-6"></i>
+    </a>
+</div>
+                </div>
+
+                <div class="reveal delay-200 hidden md:flex justify-center">
+                    <div class="relative w-80 h-80 md:w-96 md:h-96">
+                        <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl rotate-6 opacity-20 blur-lg animate-pulse"></div>
+                        <div class="absolute inset-0 bg-slate-800 rounded-2xl border border-slate-700 shadow-2xl overflow-hidden flex items-center justify-center group hover:scale-[1.02] transition-transform duration-500">
+                            <!-- Code Snippet Visual -->
+                            <div class="p-6 font-mono text-xs md:text-sm text-slate-300 w-full">
+                                <div class="flex gap-2 mb-4">
+                                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                </div>
+                                <div class="space-y-2">
+                                    <p><span class="text-purple-400">const</span> <span class="text-yellow-300">engineer</span> = {</p>
+                                    <p class="pl-4">name: <span class="text-green-400">'Vishwajeet'</span>,</p>
+                                    <p class="pl-4">focus: [<span class="text-green-400">'Innovation'</span>, <span class="text-green-400">'Research'</span>],</p>
+                                    <p class="pl-4">hardWorker: <span class="text-blue-400">true</span>,</p>
+                                    <p class="pl-4">coffee: <span class="text-purple-400">Infinity</span></p>
+                                    <p>};</p>
+                                    <br>
+                                    <p><span class="text-purple-400">function</span> <span class="text-blue-400">buildFuture</span>() {</p>
+                                    <p class="pl-4"><span class="text-purple-400">return</span> engineer.create();</p>
+                                    <p>}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-slate-500">
+                <i data-lucide="chevron-down" class="w-6 h-6"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">About Me</h2>
+                <div class="h-1 w-24 bg-cyan-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="reveal">
+                    <img src="MySelf.jpeg" alt="Engineering Workspace" class="rounded-xl shadow-2xl border border-slate-700 opacity-90 hover:opacity-100 transition-opacity">
+                </div>
+                <div class="reveal space-y-6">
+                    <h3 class="text-2xl font-bold text-white">Engineering the Future</h3>
+                    <p class="text-slate-400 leading-relaxed">
+                        I am an engineering student with a deep curiosity for how things work and a drive to make them work better. My academic journey is fueled by a combination of rigorous coursework and hands-on project experience.
+                    </p>
+                    <p class="text-slate-400 leading-relaxed">
+                        Currently focusing on software development, embedded systems, and technical research. I believe in bridging the gap between theoretical concepts and real-world applications.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mt-4">
+                        <div class="p-4 bg-slate-800 rounded-lg border border-slate-700">
+                            <i data-lucide="book-open" class="text-cyan-400 mb-2"></i>
+                            <h4 class="font-bold text-white">Continuous Learner</h4>
+                            <p class="text-sm text-slate-500">Always updating my tech stack.</p>
+                        </div>
+                        <div class="p-4 bg-slate-800 rounded-lg border border-slate-700">
+                            <i data-lucide="layers" class="text-cyan-400 mb-2"></i>
+                            <h4 class="font-bold text-white">Problem Solver</h4>
+                            <p class="text-sm text-slate-500">Analytical approach to challenges.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Technical Arsenal</h2>
+                <div class="h-1 w-24 bg-cyan-500 mx-auto rounded-full"></div>
+                <p class="text-slate-400 mt-4">Languages and tools I use to bring ideas to life.</p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Skill Item -->
+                <div class="skill-container reveal">
+                    <div class="flex justify-between mb-2">
+                        <span class="text-slate-200 font-medium">Java / Data Structures</span>
+                        <span class="text-cyan-400 text-sm">Intermediate</span>
+                    </div>
+                    <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                        <div class="skill-progress h-full bg-gradient-to-r from-blue-500 to-cyan-400" data-width="65%"></div>
+                    </div>
+                </div>
+
+                <!-- Skill Item -->
+                <div class="skill-container reveal">
+                    <div class="flex justify-between mb-2">
+                        <span class="text-slate-200 font-medium">Frontend Development(HTML, CSS, JavaScript, React.js)</span>
+                        <span class="text-cyan-400 text-sm">Intermediate</span>
+                    </div>
+                    <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                        <div class="skill-progress h-full bg-gradient-to-r from-blue-500 to-cyan-400" data-width="65%"></div>
+                    </div>
+                </div>
+
+                <!-- Skill Item -->
+                <div class="skill-container reveal">
+                    <div class="flex justify-between mb-2">
+                        <span class="text-slate-200 font-medium">Backend Development (Node.js,Express.js)</span>
+                        <span class="text-cyan-400 text-sm">Intermediate</span>
+                    </div>
+                    <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                        <div class="skill-progress h-full bg-gradient-to-r from-blue-500 to-cyan-400" data-width="60%"></div>
+                    </div>
+                </div>
+
+                <!-- Skill Item -->
+                <div class="skill-container reveal">
+                    <div class="flex justify-between mb-2">
+                        <span class="text-slate-200 font-medium">Database Management (SQL/NoSQL)</span>
+                        <span class="text-cyan-400 text-sm">Intermediate</span>
+                    </div>
+                    <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                        <div class="skill-progress h-full bg-gradient-to-r from-blue-500 to-cyan-400" data-width="70%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 text-center reveal">
+                <div class="p-4 bg-slate-800/50 rounded-lg border border-slate-700 hover:border-cyan-500/50 transition-colors">
+                    <i data-lucide="database" class="w-8 h-8 text-cyan-400 mx-auto mb-2"></i>
+                    <span class="text-slate-300">Git/Github</span>
+                </div>
+                <div class="p-4 bg-slate-800/50 rounded-lg border border-slate-700 hover:border-cyan-500/50 transition-colors">
+                    <i data-lucide="zap" class="w-8 h-8 text-yellow-400 mx-auto mb-2"></i>
+                    <span class="text-slate-300">RestAPI</span>
+                </div>
+                <div class="p-4 bg-slate-800/50 rounded-lg border border-slate-700 hover:border-cyan-500/50 transition-colors">
+                    <i data-lucide="code" class="w-8 h-8 text-blue-400 mx-auto mb-2"></i>
+                    <span class="text-slate-300">Typescript</span>
+                </div>
+                <div class="p-4 bg-slate-800/50 rounded-lg border border-slate-700 hover:border-cyan-500/50 transition-colors">
+                    <i data-lucide="layers" class="w-8 h-8 text-purple-400 mx-auto mb-2"></i>
+                    <span class="text-slate-300">Docker</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Featured Projects</h2>
+                <div class="h-1 w-24 bg-cyan-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="reveal bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl overflow-hidden hover:border-cyan-500/50 transition-all hover:-translate-y-2 duration-300 group">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="p-3 bg-slate-900 rounded-lg text-cyan-400 group-hover:text-cyan-300 shadow-lg transition-all">
+                                <i data-lucide="layout" class="w-6 h-6"></i>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="https://github.com/SinghVishwajeet09/PawCare" target="_blank" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
+                                <a href="https://github.com/SinghVishwajeet09/PawCare" target="_blank" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="external-link" class="w-5 h-5"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">PawCare</h3>
+                        <p class="text-slate-400 mb-4 text-sm leading-relaxed">
+                            PawCare – An Animal Rescue Network application designed to connect injured and stray animals with nearby NGOs and volunteers for quick rescue action. Featuring real-time geolocation-based rescue alerts via Firebase, JWT/OTP-based authentication, and an AI-powered chatbot (PawBot) using Gemini AI for instant breed and health detection.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="px-2 py-1 text-xs rounded-md bg-slate-700/50 text-cyan-200 border border-slate-600">React</span>
+                            <span class="px-2 py-1 text-xs rounded-md bg-slate-700/50 text-cyan-200 border border-slate-600">Node.js</span>
+                            <span class="px-2 py-1 text-xs rounded-md bg-slate-700/50 text-cyan-200 border border-slate-600">Express.js</span>
+                            <span class="px-2 py-1 text-xs rounded-md bg-slate-700/50 text-cyan-200 border border-slate-600">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="reveal delay-100 bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl overflow-hidden hover:border-cyan-500/50 transition-all hover:-translate-y-2 duration-300 group">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="p-3 bg-slate-900 rounded-lg text-cyan-400 group-hover:text-cyan-300 shadow-lg transition-all">
+                                <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="https://github.com/SinghVishwajeet09/neighborly" target="_blank" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
+                                <a href="https://github.com/SinghVishwajeet09/neighborly" target="_blank" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="external-link" class="w-5 h-5"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">Neighborly</h3>
+                        <p class="text-slate-400 mb-4 text-sm leading-relaxed">
+                            Neighbourly – A community-focused web platform that helps neighbors connect, communicate, and share resources in one place, featuring secure authentication, local announcements, resource sharing, event coordination, and a centralized neighborhood network.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="px-2 py-1 text-xs rounded-md bg-slate-700/50 text-cyan-200 border border-slate-600">React</span>
+                            <span class="px-2 py-1 text-xs rounded-md bg-slate-700/50 text-cyan-200 border border-slate-600">TypeScript</span>
+                            <span class="px-2 py-1 text-xs rounded-md bg-slate-700/50 text-cyan-200 border border-slate-600">Node.js</span>
+                            <span class="px-2 py-1 text-xs rounded-md bg-slate-700/50 text-cyan-200 border border-slate-600">PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="reveal delay-200 bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl overflow-hidden hover:border-cyan-500/50 transition-all hover:-translate-y-2 duration-300 group">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="p-3 bg-slate-900 rounded-lg text-cyan-400 group-hover:text-cyan-300 shadow-lg transition-all">
+                                <i data-lucide="code-2" class="w-6 h-6"></i>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="https://github.com/SinghVishwajeet09/online-job-portal" target="_blank" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
+                                <a href="https://github.com/SinghVishwajeet09/online-job-portal" target="_blank" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="external-link" class="w-5 h-5"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">Job Portal</h3>
+                        <p class="text-slate-400 mb-4 text-sm leading-relaxed">
+                           Job Portal – A comprehensive web application for connecting job seekers and employers on a single platform, featuring secure authentication, job postings, application tracking, profile management, resume uploads, and centralized recruitment management.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="px-2 py-1 text-xs rounded-md bg-slate-700/50 text-cyan-200 border border-slate-600">HTML</span>
+                            <span class="px-2 py-1 text-xs rounded-md bg-slate-700/50 text-cyan-200 border border-slate-600">JavaScript</span>
+                            <span class="px-2 py-1 text-xs rounded-md bg-slate-700/50 text-cyan-200 border border-slate-600">PHP</span>
+                            <span class="px-2 py-1 text-xs rounded-md bg-slate-700/50 text-cyan-200 border border-slate-600">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="py-24 relative overflow-hidden">
+        <!-- Background Glow Accents -->
+        <div class="absolute top-1/3 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-10 right-0 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-sm font-medium mb-4">
+                    <i data-lucide="file-text" class="w-4 h-4"></i>
+                    <span>Curriculum Vitae</span>
+                </div>
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Resume & Experience</h2>
+                <div class="h-1 w-24 bg-cyan-500 mx-auto rounded-full"></div>
+                <p class="text-slate-400 mt-4 max-w-2xl mx-auto">
+                    An overview of my academic background, technical proficiencies, engineering projects, and career milestones.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+                <!-- Left: Academic & Professional Highlights (7 cols) -->
+                <div class="lg:col-span-7 space-y-6">
+                    <!-- Education Card -->
+                    <div class="reveal bg-slate-800/40 backdrop-blur-sm border border-slate-700/80 rounded-2xl p-6 md:p-8 hover:border-cyan-500/40 transition-all">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-cyan-500/10 border border-cyan-500/30 rounded-xl text-cyan-400">
+                                <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+                                    <h3 class="text-xl font-bold text-white">Bachelor of Technology / Engineering</h3>
+                                    <span class="text-xs font-semibold px-2.5 py-1 bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 rounded-full">2023 – 2027</span>
+                                </div>
+                                <p class="text-cyan-300 text-sm font-medium mb-2">Information Technology Focus</p>
+                                <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                                    Rigorous coursework in Data Structures & Algorithms, Full-Stack System Architecture, Database Engineering, and Artificial Intelligence foundations.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="text-xs px-2.5 py-1 bg-slate-900/80 text-slate-300 rounded-md border border-slate-700">Data Structures</span>
+                                    <span class="text-xs px-2.5 py-1 bg-slate-900/80 text-slate-300 rounded-md border border-slate-700">Computer Fundamentals</span>
+                                    <span class="text-xs px-2.5 py-1 bg-slate-900/80 text-slate-300 rounded-md border border-slate-700">Cloud & APIs</span>
+                                    <span class="text-xs px-2.5 py-1 bg-slate-900/80 text-slate-300 rounded-md border border-slate-700">AI / ML</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Core Competencies Matrix -->
+                    <div class="reveal delay-100 bg-slate-800/40 backdrop-blur-sm border border-slate-700/80 rounded-2xl p-6 md:p-8 hover:border-blue-500/40 transition-all">
+                        <div class="flex items-start gap-4 mb-4">
+                            <div class="p-3 bg-blue-500/10 border border-blue-500/30 rounded-xl text-blue-400">
+                                <i data-lucide="briefcase" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Core Engineering Competencies</h3>
+                                <p class="text-slate-400 text-sm">Key strengths demonstrated through production-ready projects</p>
+                            </div>
+                        </div>
+                        <div class="grid sm:grid-cols-2 gap-3 mt-4">
+                            <div class="p-3 bg-slate-900/60 rounded-xl border border-slate-800 flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5"></i>
+                                <div>
+                                    <h4 class="text-white text-sm font-semibold">Full-Stack Development</h4>
+                                    <p class="text-slate-400 text-xs mt-0.5">React, Node.js, Express, TypeScript, REST APIs</p>
+                                </div>
+                            </div>
+                            <div class="p-3 bg-slate-900/60 rounded-xl border border-slate-800 flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5"></i>
+                                <div>
+                                    <h4 class="text-white text-sm font-semibold">Database Management</h4>
+                                    <p class="text-slate-400 text-xs mt-0.5">MongoDB, PostgreSQL, SQL Schemas, Indexing</p>
+                                </div>
+                            </div>
+                            <div class="p-3 bg-slate-900/60 rounded-xl border border-slate-800 flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5"></i>
+                                <div>
+                                    <h4 class="text-white text-sm font-semibold">AI & Machine Learning</h4>
+                                    <p class="text-slate-400 text-xs mt-0.5">Generative AI, LLMs, AI APIs, Prompt Engineering</p>
+                                </div>
+                            </div>
+                            <div class="p-3 bg-slate-900/60 rounded-xl border border-slate-800 flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5"></i>
+                                <div>
+                                    <h4 class="text-white text-sm font-semibold">DevOps & Tools</h4>
+                                    <p class="text-slate-400 text-xs mt-0.5">Git/GitHub, Docker, Postman, VS Code, GitHub Actions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Download CTA & Resume Preview Card (5 cols) -->
+                <div class="lg:col-span-5 reveal delay-200">
+                    <div class="h-full bg-gradient-to-b from-slate-800/80 via-slate-900/80 to-slate-950/90 backdrop-blur-md border border-cyan-500/30 rounded-2xl p-6 md:p-8 flex flex-col justify-between shadow-2xl relative group hover:border-cyan-400/60 transition-all">
+                        <!-- Decorative top gradient line -->
+                        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 rounded-t-2xl"></div>
+
+                        <div>
+                            <!-- Header / Badge -->
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                    <span class="ml-2 font-mono text-xs text-slate-400">vishwajeet_resume.pdf</span>
+                                </div>
+                                <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                    Updated 2026
+                                </span>
+                            </div>
+
+                            <!-- Visual Resume Card Mockup -->
+                            <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-5 mb-6 font-mono text-xs text-slate-300 space-y-2.5 shadow-inner">
+                                <div class="text-cyan-400 font-bold text-sm">VISHWAJEET RAJ SINGH</div>
+                                <div class="text-slate-400 text-xs">Role: Software Development Engineer (SDE) | Full-Stack Developer</div>
+                                <div class="text-slate-500 text-xs">Format: PDF | ATS Friendly | Verified</div>
+                                <div class="pt-2 border-t border-slate-800 flex items-center justify-between text-slate-400 text-xs">
+                                    <span>Highlights:</span>
+                                    <span class="text-cyan-300">PawCare, Neighborly, Job Portal</span>
+                                </div>
+                                <div class="flex items-center justify-between text-slate-400 text-xs">
+                                    <span>Certifications:</span>
+                                    <span class="text-yellow-400">Oracle AI, Cisco CyberSec, MongoDB</span>
+                                </div>
+                            </div>
+
+                            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                                Looking for a dedicated engineer who can hit the ground running? Download my complete resume for a detailed breakdown of experience, technical capabilities, and project achievements.
+                            </p>
+                        </div>
+
+                        <!-- CTA Actions -->
+                        <div class="space-y-3 pt-4 border-t border-slate-800">
+                            <button id="openResumeModalBtn" type="button" class="w-full group/btn inline-flex items-center justify-center gap-3 px-6 py-3.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold rounded-xl shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-0.5 active:translate-y-0 transition-all">
+                                <i data-lucide="download" class="w-5 h-5 group-hover/btn:animate-bounce"></i>
+                                <span>Download Resume (PDF)</span>
+                            </button>
+
+                            <!-- <a href="resume.pdf" target="_blank" class="w-full inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-slate-800/80 hover:bg-slate-800 text-slate-300 hover:text-white text-sm font-medium rounded-xl border border-slate-700 hover:border-slate-600 transition-all">
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                                <span>Quick PDF Preview</span>
+                            </a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-24 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Certifications & Awards</h2>
+                <div class="h-1 w-24 bg-cyan-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Certification 1 -->
+                <div class="reveal bg-gradient-to-br from-slate-800/50 to-slate-900/30 border border-slate-700/50 rounded-lg overflow-hidden hover:border-yellow-500/50 transition-all hover:shadow-lg hover:shadow-yellow-500/20">
+                    <div class="h-2 bg-gradient-to-r from-yellow-500 to-amber-500"></div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-1">Oracle Certified Foundations Associate</h3>
+                                <p class="text-sm text-slate-400">AI Foundations Associate</p>
+                            </div>
+                            <i data-lucide="award" class="w-6 h-6 text-yellow-500"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm mb-4">Certified in foundational concepts of Artificial Intelligence, machine learning principles, and real-world applications.</p>
+                        <div class="flex items-center justify-between text-xs text-slate-400">
+                            <span>Issued: 2025</span>
+                            <span class="px-2 py-1 bg-yellow-500/10 text-yellow-400 rounded">Verified</span>
+                        </div>
+        
+                    </div>
+                </div>
+
+                <!-- Certification 2 -->
+                <div class="reveal bg-gradient-to-br from-slate-800/50 to-slate-900/30 border border-slate-700/50 rounded-lg overflow-hidden hover:border-cyan-500/50 transition-all hover:shadow-lg hover:shadow-cyan-500/20">
+                    <div class="h-2 bg-gradient-to-r from-cyan-500 to-blue-500"></div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-1">Cisco Certified Cybersecurity Associate</h3>
+                                <p class="text-sm text-slate-400">Associate Level</p>
+                            </div>
+                            <i data-lucide="award" class="w-6 h-6 text-cyan-500"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm mb-4">Certified in cybersecurity fundamentals, covering online threats, data protection, network security, and safe digital practices.</p>
+                        <div class="flex items-center justify-between text-xs text-slate-400">
+                            <span>Issued: 2026</span>
+                            <span class="px-2 py-1 bg-cyan-500/10 text-cyan-400 rounded">Verified</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certification 3 -->
+                <div class="reveal bg-gradient-to-br from-slate-800/50 to-slate-900/30 border border-slate-700/50 rounded-lg overflow-hidden hover:border-pink-500/50 transition-all hover:shadow-lg hover:shadow-pink-500/20">
+                    <div class="h-2 bg-gradient-to-r from-pink-500 to-red-500"></div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-1">MongoDB Certified Introduction to MongoDB</h3>
+                                <p class="text-sm text-slate-400">MongoDB Certification</p>
+                            </div>
+                            <i data-lucide="award" class="w-6 h-6 text-pink-500"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm mb-4">Certified in MongoDB fundamentals including document databases, collections, CRUD operations, and basic data modeling.</p>
+                        <div class="flex items-center justify-between text-xs text-slate-400">
+                            <span>Issued: 2025</span>
+                            <span class="px-2 py-1 bg-pink-500/10 text-pink-400 rounded">Verified</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certification 4 -->
+                <div class="reveal bg-gradient-to-br from-slate-800/50 to-slate-900/30 border border-slate-700/50 rounded-lg overflow-hidden hover:border-green-500/50 transition-all hover:shadow-lg hover:shadow-green-500/20">
+                    <div class="h-2 bg-gradient-to-r from-green-500 to-emerald-500"></div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-1">Building Machine Learning System with Tensorflow</h3>
+                                <p class="text-sm text-slate-400">Infosys Certification</p>
+                            </div>
+                            <i data-lucide="award" class="w-6 h-6 text-green-500"></i> 
+                        </div>
+                        <p class="text-slate-300 text-sm mb-4">Expertise in building and deploying machine learning models using TensorFlow, including data preprocessing, model training, and evaluation.</p>
+                        <div class="flex items-center justify-between text-xs text-slate-400">
+                            <span>Issued: 2025</span>
+                            <span class="px-2 py-1 bg-green-500/10 text-green-400 rounded">Verified</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Award 1 -->
+                <div class="reveal bg-gradient-to-br from-slate-800/50 to-slate-900/30 border border-slate-700/50 rounded-lg overflow-hidden hover:border-orange-500/50 transition-all hover:shadow-lg hover:shadow-orange-500/20">
+                    <div class="h-2 bg-gradient-to-r from-orange-500 to-amber-500"></div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-1">Infosys Certified in Next Generation Technologies</h3>
+                                <p class="text-sm text-slate-400">Infosys Certification</p>
+                            </div>
+                            <i data-lucide="trophy" class="w-6 h-6 text-orange-500"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm mb-4">Certified in emerging technologies including cloud computing, artificial intelligence, automation, and digital transformation fundamentals.</p>
+                        <div class="flex items-center justify-between text-xs text-slate-400">
+                            <span>Issued: 2025</span>
+                            <span class="px-2 py-1 bg-orange-500/10 text-orange-400 rounded">Verified</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Award 2 -->
+                <div class="reveal bg-gradient-to-br from-slate-800/50 to-slate-900/30 border border-slate-700/50 rounded-lg overflow-hidden hover:border-purple-500/50 transition-all hover:shadow-lg hover:shadow-purple-500/20">
+                    <div class="h-2 bg-gradient-to-r from-purple-500 to-violet-500"></div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-1">Design Thinking For Innovation</h3>
+                                <p class="text-sm text-slate-400">Coursera/University of Virginia</p>
+                            </div>
+                            <i data-lucide="trophy" class="w-6 h-6 text-purple-500"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm mb-4">Certified in design thinking methodology including user empathy, problem framing, ideation, prototyping, and innovative solution development.</p>
+                        <div class="flex items-center justify-between text-xs text-slate-400">
+                            <span>Issued: 2024</span>
+                            <span class="px-2 py-1 bg-purple-500/10 text-purple-400 rounded">Verified</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-slate-900/50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Get In Touch</h2>
+                <div class="h-1 w-24 bg-cyan-500 mx-auto rounded-full"></div>
+                <p class="text-slate-400 mt-4">Have a project in mind or just want to discuss engineering?</p>
+            </div>
+
+            <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 shadow-xl reveal">
+                <form class="space-y-6" id="contactForm">
+                    <input type="hidden" name="to_email" value="singhvishwajeet958@gmail.com">
+                    <input type="hidden" name="reply_to" id="reply_to" value="">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Name</label>
+                            <input type="text" id="from_name" name="from_name" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors" placeholder="Your Name" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Email</label>
+                            <input type="email" id="from_email" name="from_email" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors" placeholder="youremail@example.com" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Message</label>
+                        <textarea id="from_message" name="from_message" rows="4" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors" placeholder="Tell me about your project..." required></textarea>
+                    </div>
+                    <div id="statusMessage" class="hidden p-4 rounded-lg text-sm font-medium" role="alert"></div>
+                    <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold py-4 rounded-lg hover:shadow-lg hover:shadow-cyan-500/25 transition-all transform hover:-translate-y-1">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+            
+            <div class="mt-12 text-center border-t border-slate-800 pt-8">
+                <p class="text-slate-500 text-sm">© <span id="year"></span> Vishwajeet Raj Singh. All rights reserved.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Download Lead Capture Modal -->
+    <div id="resumeModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md hidden transition-opacity duration-300">
+        <div class="bg-slate-900 border border-slate-700/80 rounded-2xl max-w-lg w-full p-6 md:p-8 shadow-2xl relative animate-fade-in-up text-slate-200">
+            <!-- Close Button -->
+            <button id="closeResumeModalBtn" type="button" class="absolute top-5 right-5 text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition-colors" aria-label="Close modal">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <!-- Header -->
+            <div class="flex items-center gap-3 mb-4">
+                <div class="p-3 bg-cyan-500/10 border border-cyan-500/30 rounded-xl text-cyan-400">
+                    <i data-lucide="file-down" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-white">Download Resume</h3>
+                    <p class="text-xs text-slate-400">Vishwajeet Raj Singh &bull; PDF Version</p>
+                </div>
+            </div>
+
+            <p class="text-sm text-slate-300 mb-6 leading-relaxed">
+               Please enter your correct details below so I can learn a little about your interest and get in touch with you accordingly. The resume will download immediately, and I’ll be notified of your interest.
+            </p>
+
+            <!-- Form -->
+            <form id="resumeDownloadForm" class="space-y-4">
+                <input type="hidden" name="to_email" value="singhvishwajeet958@gmail.com">
+                <input type="hidden" name="reply_to" id="resume_reply_to" value="">
+                <input type="hidden" name="from_name" id="resume_from_name_hidden" value="">
+                <input type="hidden" name="from_email" id="resume_from_email_hidden" value="">
+                <input type="hidden" name="from_message" id="resume_from_message_hidden" value="">
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">Your Name <span class="text-cyan-400">*</span></label>
+                    <input type="text" id="resume_name_input" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors" placeholder="e.g. Sakshi Singh" required>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">Work / Personal Email <span class="text-cyan-400">*</span></label>
+                    <input type="email" id="resume_email_input" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors" placeholder="e.g. sakshisingh@gmail.com" required>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">Company / Org</label>
+                        <input type="text" id="resume_company_input" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors" placeholder="e.g. Google, Startup, etc.">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">Purpose</label>
+                        <select id="resume_purpose_input" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors">
+                            <option value="Recruitment / Hiring">Recruitment / Hiring</option>
+                            <option value="Internship / Full-time Opportunity">Internship / Full-time Opportunity</option>
+                            <option value="Project Collaboration">Project Collaboration</option>
+                            <option value="Networking">Networking</option>
+                            <option value="Academic / Review">Academic / Review</option>
+                            <option value="General Interest">General Interest</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="resumeStatusMessage" class="hidden p-3.5 rounded-lg text-xs font-medium" role="alert"></div>
+
+                <div id="manualDownloadArea" class="hidden text-center pt-2">
+                    <p class="text-xs text-slate-400 mb-2">If download didn't start automatically:</p>
+                    <a id="directResumeDownloadLink" href="resume.pdf" download="Vishwajeet_Raj_Singh_Resume.pdf" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-cyan-500/40 rounded-lg text-xs font-semibold transition-all">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>Click to Download Directly</span>
+                    </a>
+                </div>
+
+                <button type="submit" id="resumeSubmitBtn" class="w-full mt-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold py-3 px-4 rounded-xl shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span id="resumeBtnText">Download Resume</span>
+                </button>
+
+                <p class="text-[11px] text-center text-slate-500 pt-1 flex items-center justify-center gap-1">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i>
+                    <span>Your information stays safe and private.</span>
+                    <!-- <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i> -->
+                    <!-- <span>Not spam. Promise.</span> -->
+            
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Update Copyright Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+
+        // Scroll Spy & Active Link Highlighting
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-cyan-400');
+                link.classList.add('text-slate-300');
+                if (current && link.getAttribute('href').includes(current)) {
+                    link.classList.remove('text-slate-300');
+                    link.classList.add('text-cyan-400');
+                }
+            });
+        });
+
+        // Scroll Reveal Animation (Intersection Observer)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    
+                    // Handle Skill Bars specifically
+                    if (entry.target.querySelector('.skill-progress')) {
+                        const progressBar = entry.target.querySelector('.skill-progress');
+                        progressBar.style.width = progressBar.getAttribute('data-width');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Resume Modal Controls
+        const resumeModal = document.getElementById('resumeModal');
+        const openResumeBtn = document.getElementById('openResumeModalBtn');
+        const closeResumeBtn = document.getElementById('closeResumeModalBtn');
+
+        function openResumeModal() {
+            if (resumeModal) {
+                resumeModal.classList.remove('hidden');
+                lucide.createIcons();
+            }
+        }
+
+        function closeResumeModal() {
+            if (resumeModal) {
+                resumeModal.classList.add('hidden');
+            }
+        }
+
+        if (openResumeBtn) {
+            openResumeBtn.addEventListener('click', openResumeModal);
+        }
+
+        if (closeResumeBtn) {
+            closeResumeBtn.addEventListener('click', closeResumeModal);
+        }
+
+        // Close on backdrop click
+        if (resumeModal) {
+            resumeModal.addEventListener('click', (e) => {
+                if (e.target === resumeModal) {
+                    closeResumeModal();
+                }
+            });
+        }
+
+        // Close on Escape key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && resumeModal && !resumeModal.classList.contains('hidden')) {
+                closeResumeModal();
+            }
+        });
+
+        // Helper to trigger resume file download
+        function triggerResumeDownload() {
+            const link = document.createElement('a');
+            link.href = 'resume.pdf';
+            link.download = 'Vishwajeet_Raj_Singh_Resume.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // EmailJS Initialization & Form Handlers
+        (function () {
+            if (typeof emailjs === 'undefined') {
+                console.error('EmailJS SDK did not load. Check the script tag in the <head>.');
+                return;
+            }
+
+            emailjs.init('qySkiVILuPQULwjKc');
+
+            // 1. Contact Form Submission
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const statusMessage = document.getElementById('statusMessage');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', async function (e) {
+                    e.preventDefault();
+
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Sending...';
+                    statusMessage.classList.add('hidden');
+
+                    const userEmailField = document.getElementById('from_email');
+                    const replyToField = document.getElementById('reply_to');
+                    if (userEmailField && replyToField) {
+                        replyToField.value = userEmailField.value || '';
+                    }
+
+                    try {
+                        await emailjs.sendForm('service_44m27zl', 'template_9ki5xh2', this);
+
+                        statusMessage.classList.remove('hidden');
+                        statusMessage.textContent = '✓ Message received successfully! I\'ll get back to you soon.';
+                        statusMessage.classList.add('bg-green-500/20', 'border', 'border-green-500/50', 'text-green-400');
+                        statusMessage.classList.remove('bg-red-500/20', 'border-red-500/50', 'text-red-400');
+
+                        this.reset();
+                    } catch (error) {
+                        const errText = (error && (error.text || error.message)) ? (error.text || error.message) : String(error);
+                        statusMessage.classList.remove('hidden');
+                        statusMessage.textContent = '✗ Error sending message: ' + errText;
+                        statusMessage.classList.add('bg-red-500/20', 'border', 'border-red-500/50', 'text-red-400');
+                        statusMessage.classList.remove('bg-green-500/20', 'border-green-500/50', 'text-green-400');
+                        console.error('EmailJS Error:', error);
+                    } finally {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Send Message';
+                    }
+                });
+            }
+
+            // 2. Resume Download Lead Capture Form Submission
+            const resumeForm = document.getElementById('resumeDownloadForm');
+            const resumeSubmitBtn = document.getElementById('resumeSubmitBtn');
+            const resumeBtnText = document.getElementById('resumeBtnText');
+            const resumeStatusMessage = document.getElementById('resumeStatusMessage');
+            const manualDownloadArea = document.getElementById('manualDownloadArea');
+
+            if (resumeForm) {
+                resumeForm.addEventListener('submit', async function (e) {
+                    e.preventDefault();
+
+                    const name = document.getElementById('resume_name_input').value.trim();
+                    const email = document.getElementById('resume_email_input').value.trim();
+                    const company = document.getElementById('resume_company_input').value.trim() || 'Not specified';
+                    const purpose = document.getElementById('resume_purpose_input').value;
+
+                    // Populate hidden fields for EmailJS template
+                    document.getElementById('resume_from_name_hidden').value = name;
+                    document.getElementById('resume_from_email_hidden').value = email;
+                    document.getElementById('resume_reply_to').value = email;
+                    document.getElementById('resume_from_message_hidden').value = 
+                        `📄 RESUME DOWNLOAD NOTIFICATION\n` +
+                        `---------------------------------\n` +
+                        `Name: ${name}\n` +
+                        `Email: ${email}\n` +
+                        `Company / Organization: ${company}\n` +
+                        `Purpose: ${purpose}\n` +
+                        `Date & Time: ${new Date().toLocaleString()}`;
+
+                    resumeSubmitBtn.disabled = true;
+                    if (resumeBtnText) resumeBtnText.textContent = 'Preparing Download...';
+                    resumeStatusMessage.classList.add('hidden');
+
+                    try {
+                        // Send notification email to Vishwajeet
+                        await emailjs.sendForm('service_44m27zl', 'template_9ki5xh2', this);
+
+                        // Trigger download
+                        triggerResumeDownload();
+
+                        // Show success message
+                        resumeStatusMessage.classList.remove('hidden');
+                        resumeStatusMessage.innerHTML = '<strong>Resume acquired!</strong> You may now judge my entire career in 30 seconds. Please be gentle. <strong>😂</strong>';    
+                        resumeStatusMessage.classList.add('bg-emerald-500/20', 'border', 'border-emerald-500/50', 'text-emerald-300');
+                        resumeStatusMessage.classList.remove('bg-red-500/20', 'border-red-500/50', 'text-red-400');
+
+                        // Show manual fallback link
+                        if (manualDownloadArea) {
+                            manualDownloadArea.classList.remove('hidden');
+                            lucide.createIcons();
+                        }
+
+                        // Reset form fields
+                        resumeForm.reset();
+                    } catch (error) {
+                        console.error('Resume EmailJS Error:', error);
+                        // Even if EmailJS has an issue, do not block the user from getting the resume
+                        triggerResumeDownload();
+
+                        resumeStatusMessage.classList.remove('hidden');
+                        resumeStatusMessage.innerHTML = '✓ <strong>Download started!</strong> (Note: Notification dispatch encountered a network delay).';
+                        resumeStatusMessage.classList.add('bg-cyan-500/20', 'border', 'border-cyan-500/50', 'text-cyan-300');
+                        resumeStatusMessage.classList.remove('bg-red-500/20', 'border-red-500/50', 'text-red-400');
+
+                        if (manualDownloadArea) {
+                            manualDownloadArea.classList.remove('hidden');
+                            lucide.createIcons();
+                        }
+                    } finally {
+                        resumeSubmitBtn.disabled = false;
+                        if (resumeBtnText) resumeBtnText.textContent = 'Download Again';
+                    }
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
